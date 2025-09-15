@@ -28,17 +28,16 @@ function handleScientific(func) {
         let result;
         switch (func) {
             case 'sin':
-                result = Math.sin(value * Math.PI / 180); // Градусы в радианы
+                result = Math.sin(value * Math.PI / 180);
                 break;
             case 'cos':
-                result = Math.cos(value * Math.PI / 180); // Градусы в радианы
+                result = Math.cos(value * Math.PI / 180);
                 break;
             case 'tan':
-                // Обработка тангенса 90 градусов
                 if (value % 180 === 90) {
                     result = 'Ошибка';
                 } else {
-                    result = Math.tan(value * Math.PI / 180); // Градусы в радианы
+                    result = Math.tan(value * Math.PI / 180);
                 }
                 break;
             case 'sqrt':
@@ -63,43 +62,54 @@ function handleScientific(func) {
                 }
                 break;
         }
-        display.value = (result === 'Ошибка') ? result : result.toFixed(8);
+        display.value = (result === 'Ошибка') ? result : result.toFixed(8).replace(/\.?0+$/, "");
     } catch (error) {
         display.value = 'Ошибка';
     }
 }
-
 
 function calculate() {
     if (display.value === 'Ошибка') return;
     let expression = display.value;
 
     try {
-        // Заменяем пользовательские символы на стандартные для JavaScript
         expression = expression.replace(/÷/g, '/').replace(/×/g, '*').replace(/\^/g, '**');
-
-        // Создаем безопасную функцию для вычисления, чтобы избежать прямого eval
         const safeCalc = new Function('return ' + expression);
-        
         let result = safeCalc();
         
-        // Проверяем на бесконечность (например, деление на 0)
         if (!isFinite(result)) {
             throw new Error("Деление на ноль");
         }
         
-        // Округляем, если результат - число с плавающей точкой
         display.value = parseFloat(result.toFixed(10));
-
     } catch (error) {
         display.value = 'Ошибка';
     }
 }
 
-// Обработка нажатия Enter для ручного ввода
-display.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
+// НОВЫЙ КОД ДЛЯ ПОДДЕРЖКИ КЛАВИАТУРЫ
+document.addEventListener('keydown', (event) => {
+    const key = event.key;
+    
+    // Предотвращаем ввод букв и других символов в поле, если оно в фокусе
+    if (document.activeElement === display) {
         event.preventDefault();
+    }
+
+    if (key >= '0' && key <= '9') {
+        appendSymbol(key);
+    } else if (key === '+' || key === '-' || key === '*' || key === '/' || key === '%' || key === '^' || key === '(' || key === ')') {
+        // Заменяем клавиатурные * и / на символы калькулятора
+        if (key === '*') appendSymbol('×');
+        else if (key === '/') appendSymbol('÷');
+        else appendSymbol(key);
+    } else if (key === '.') {
+        appendSymbol('.');
+    } else if (key === 'Enter' || key === '=') {
         calculate();
+    } else if (key === 'Backspace') {
+        deleteLast();
+    } else if (key === 'Escape' || key.toLowerCase() === 'c') {
+        clearDisplay();
     }
 });
