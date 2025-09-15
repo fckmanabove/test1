@@ -1,0 +1,93 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.calculator {
+    width: 340px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+    /* Ключевое исправление: обрезаем все, что выходит за рамки */
+    overflow: hidden; 
+}
+
+.display {
+    padding: 20px;
+    background-color: #22252d;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.display input {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 3em;
+    font-weight: 300;
+    text-align: right;
+    box-sizing: border-box;
+}
+
+.buttons {
+    display: grid;
+    /* Сетка из 5 колонок */
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px; /* Тонкие линии между кнопками */
+    background-color: #d1d1d1;
+}
+
+button {
+    border: none;
+    padding: 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    background-color: #f7f7f7;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #f0f0f0;
+}
+
+button:active {
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Класс для кнопок, занимающих 2 колонки */
+.span-2 {
+    grid-column: span 2;
+}
+
+/* Стилизация кнопок по цветам с картинки */
+
+/* Красная кнопка 'C' */
+.clear {
+    background-color: #d9534f;
+    color: white;
+}
+.clear:hover {
+    background-color: #c9302c;
+}
+
+/* Оранжевая кнопка '=' */
+.equal {
+    background-color: #f0ad4e;
+    color: white;
+}
+.equal:hover {
+    background-color: #ec971f;
+}
+
+/* Серые научные кнопки (первые два ряда) */
+.buttons button:nth-child(-n+10) {
+    background-color: #ebebeb;
+}
+.buttons button:nth-child(-n+10):hover {
+    background-color: #e0e0e0;
+}
