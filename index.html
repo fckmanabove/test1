@@ -13,44 +13,46 @@
             <input type="text" id="result" placeholder="0">
         </div>
         <div class="buttons">
-            <!-- Научные функции -->
-            <button onclick="handleScientific('sin')">sin</button>
-            <button onclick="handleScientific('cos')">cos</button>
-            <button onclick="handleScientific('tan')">tan</button>
-            <button onclick="appendSymbol('^')">x^y</button>
-            <button onclick="handleScientific('sqrt')">√</button>
+            <!-- Научная панель (5 колонок) -->
+            <div class="scientific-pad">
+                <button class="btn-grey" onclick="handleScientific('sin')">sin</button>
+                <button class="btn-grey" onclick="handleScientific('cos')">cos</button>
+                <button class="btn-grey" onclick="handleScientific('tan')">tan</button>
+                <button class="btn-grey" onclick="appendSymbol('^')">x^y</button>
+                <button class="btn-grey" onclick="handleScientific('sqrt')">√</button>
+                <button class="btn-grey" onclick="handleScientific('log')">log</button>
+                <button class="btn-grey" onclick="handleScientific('ln')">ln</button>
+                <button class="btn-grey" onclick="appendSymbol('(')">(</button>
+                <button class="btn-grey" onclick="appendSymbol(')')">)</button>
+                <button class="btn-grey" onclick="appendSymbol(Math.PI.toFixed(8))">π</button>
+            </div>
 
-            <button onclick="handleScientific('log')">log</button>
-            <button onclick="handleScientific('ln')">ln</button>
-            <button onclick="appendSymbol('(')">(</button>
-            <button onclick="appendSymbol(')')">)</button>
-            <button onclick="appendSymbol(Math.PI.toFixed(8))">π</button>
+            <!-- Основная панель (4 колонки) -->
+            <div class="main-pad">
+                <button class="btn-grey" onclick="clearDisplay()">C</button>
+                <button class="btn-grey" onclick="deleteLast()">DEL</button>
+                <button class="btn-grey" onclick="appendSymbol('%')">%</button>
+                <button class="btn-grey" onclick="appendSymbol('/')">÷</button>
 
-            <!-- Панель управления -->
-            <button class="span-2 clear" onclick="clearDisplay()">C</button>
-            <button onclick="deleteLast()">DEL</button>
-            <button onclick="appendSymbol('%')">%</button>
-            <button onclick="appendSymbol('/')">÷</button>
-            
-            <!-- Цифровая панель -->
-            <button onclick="appendSymbol('7')">7</button>
-            <button onclick="appendSymbol('8')">8</button>
-            <button onclick="appendSymbol('9')">9</button>
-            <button onclick="appendSymbol('*')">×</button>
-            <button onclick="appendSymbol('4')">4</button>
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button class="btn-grey" onclick="appendSymbol('*')">×</button>
 
-            <button onclick="appendSymbol('5')">5</button>
-            <button onclick="appendSymbol('6')">6</button>
-            <button onclick="appendSymbol('-')">-</button>
-            <button onclick="appendSymbol('1')">1</button>
-            <button onclick="appendSymbol('2')">2</button>
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button class="btn-grey" onclick="appendSymbol('-')">-</button>
 
-            <button onclick="appendSymbol('3')">3</button>
-            <button onclick="appendSymbol('+')">+</button>
-            <button onclick="appendSymbol('0')">0</button>
-            <button onclick="appendSymbol('.')">.</button>
-            
-            <button class="span-2 equal" onclick="calculate()">=</button>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button class="btn-grey" onclick="appendSymbol('+')">+</button>
+
+                <button class="span-2" onclick="appendSymbol('0')">0</button>
+                <button onclick="appendSymbol('.')">.</button>
+                <button class="btn-orange" onclick="calculate()">=</button>
+            </div>
         </div>
     </div>
 
