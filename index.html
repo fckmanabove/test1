@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инженерный калькулятор</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="calculator">
+        <div class="display">
+            <input type="text" id="result" placeholder="0">
+        </div>
+        <div class="buttons">
+            <!-- Научные функции -->
+            <button onclick="handleScientific('sin')">sin</button>
+            <button onclick="handleScientific('cos')">cos</button>
+            <button onclick="handleScientific('tan')">tan</button>
+            <button onclick="appendSymbol('^')">x^y</button>
+            <button onclick="handleScientific('sqrt')">√</button>
+
+            <button onclick="handleScientific('log')">log</button>
+            <button onclick="handleScientific('ln')">ln</button>
+            <button onclick="appendSymbol('(')">(</button>
+            <button onclick="appendSymbol(')')">)</button>
+            <button onclick="appendSymbol(Math.PI.toFixed(8))">π</button>
+
+            <!-- Панель управления -->
+            <button class="span-2 clear" onclick="clearDisplay()">C</button>
+            <button onclick="deleteLast()">DEL</button>
+            <button onclick="appendSymbol('%')">%</button>
+            <button onclick="appendSymbol('/')">÷</button>
+            
+            <!-- Цифровая панель -->
+            <button onclick="appendSymbol('7')">7</button>
+            <button onclick="appendSymbol('8')">8</button>
+            <button onclick="appendSymbol('9')">9</button>
+            <button onclick="appendSymbol('*')">×</button>
+            <button onclick="appendSymbol('4')">4</button>
+
+            <button onclick="appendSymbol('5')">5</button>
+            <button onclick="appendSymbol('6')">6</button>
+            <button onclick="appendSymbol('-')">-</button>
+            <button onclick="appendSymbol('1')">1</button>
+            <button onclick="appendSymbol('2')">2</button>
+
+            <button onclick="appendSymbol('3')">3</button>
+            <button onclick="appendSymbol('+')">+</button>
+            <button onclick="appendSymbol('0')">0</button>
+            <button onclick="appendSymbol('.')">.</button>
+            
+            <button class="span-2 equal" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
