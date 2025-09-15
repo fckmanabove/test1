@@ -3,7 +3,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #e0e0e0;
+    /* Возвращаем темно-серый фон странице */
+    background-color: #374151; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -11,16 +12,14 @@ body {
     width: 340px;
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    background-color: #f9f9f9;
-    /* Ключевое исправление: обрезаем все, что выходит за рамки */
+    /* Возвращаем светлый фон калькулятору */
+    background-color: #f3f4f6; 
     overflow: hidden; 
 }
 
 .display {
-    padding: 20px;
-    background-color: #22252d;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    padding: 25px 20px;
+    background-color: #1f2937; /* Оставляем дисплей темным для контраста */
 }
 
 .display input {
@@ -35,59 +34,50 @@ body {
 }
 
 .buttons {
+    /* Этот контейнер больше не является сеткой */
+    padding: 1px; /* Для имитации тонких линий */
+}
+
+/* Сетка для научной панели */
+.scientific-pad {
     display: grid;
-    /* Сетка из 5 колонок */
     grid-template-columns: repeat(5, 1fr);
-    gap: 1px; /* Тонкие линии между кнопками */
-    background-color: #d1d1d1;
+    gap: 1px;
+}
+
+/* Сетка для основной панели */
+.main-pad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
 }
 
 button {
     border: none;
-    padding: 20px;
+    padding: 18px 0;
     font-size: 1.2em;
     cursor: pointer;
-    background-color: #f7f7f7;
+    /* Белый фон для цифровых кнопок */
+    background-color: #fff; 
+    color: #111827;
     transition: background-color 0.2s;
 }
 
-button:hover {
-    background-color: #f0f0f0;
-}
-
 button:active {
-    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.1);
+    filter: brightness(0.95);
 }
 
-/* Класс для кнопок, занимающих 2 колонки */
 .span-2 {
     grid-column: span 2;
 }
 
-/* Стилизация кнопок по цветам с картинки */
-
-/* Красная кнопка 'C' */
-.clear {
-    background-color: #d9534f;
-    color: white;
-}
-.clear:hover {
-    background-color: #c9302c;
+/* Светло-серые кнопки (операторы и научные) */
+.btn-grey {
+    background-color: #e5e7eb;
 }
 
-/* Оранжевая кнопка '=' */
-.equal {
+/* Оранжевая кнопка '=' (вместо красной С - теперь С серая) */
+.btn-orange {
     background-color: #f0ad4e;
-    color: white;
-}
-.equal:hover {
-    background-color: #ec971f;
-}
-
-/* Серые научные кнопки (первые два ряда) */
-.buttons button:nth-child(-n+10) {
-    background-color: #ebebeb;
-}
-.buttons button:nth-child(-n+10):hover {
-    background-color: #e0e0e0;
+    color: #fff;
 }
